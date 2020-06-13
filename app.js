@@ -6,29 +6,14 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var catalogRouter = require('./routes/catalog');
 
 var app = express();
-
-// local mongo db ------------------------------------------------------------
-//Import the mongoose module
-//var mongoose = require('mongoose');
-
-//Set up default mongoose connection
-//var mongoDB = 'mongodb://127.0.0.1/my_database';
-//mongoose.connect(mongoDB, { useNewUrlParser: true });
-
-//Get the default connection
-//var db = mongoose.connection;
-
-//Bind connection to error event (to get notification of connection errors)
-//db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-// local mongo db end --------------------------------------------------------
 
 // Mongoose connection to mongodb.com cluster
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb+srv://su:LfkL4DLMFißk3045ksdfl@cluster0-yoora.gcp.mongodb.net/local_library?retryWrites=true&w=majority'
-mongoose.connect(mongoDB, {useNewUrlParser: true});
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -47,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
