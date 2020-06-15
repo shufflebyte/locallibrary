@@ -37,3 +37,7 @@ offene fragen/ selbst beheben
 
 * update auf ES6..
 
+Merken:
+
+Falls sowas: /catalog/books/123/catalog/books... ist im Model, dass die Url erzeugt die url von der Form 'catalog/boo..' und muss zu '**/**catalog/boo..' geändert werden
+

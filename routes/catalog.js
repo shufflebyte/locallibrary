@@ -6,7 +6,6 @@ var book_controller = require('../controllers/bookController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
-const book = require('../models/book');
 
 // book routes
 // catalog home page
@@ -36,7 +35,7 @@ router.post('/author/:id/delete', author_controller.author_delete_post);
 router.get('/author/:id/update', author_controller.author_update_get);
 router.post('/author/:id/update', author_controller.author_update_post);
 
-router.get('author/:id', author_controller.author_detail);
+router.get('/author/:id', author_controller.author_detail);
 router.get('/authors', author_controller.author_list);
 
 // genre routes
